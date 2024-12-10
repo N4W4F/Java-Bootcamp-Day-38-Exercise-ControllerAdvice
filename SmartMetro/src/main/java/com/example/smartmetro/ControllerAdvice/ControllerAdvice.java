@@ -31,6 +31,12 @@ public class ControllerAdvice {
         return ResponseEntity.status(400).body(new ApiResponse(msg));
     }
 
+    @ExceptionHandler(value = HttpMediaTypeNotSupportedException.class)
+    public ResponseEntity<ApiResponse> HttpMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException e) {
+        String msg = e.getMessage();
+        return ResponseEntity.status(400).body(new ApiResponse(msg));
+    }
+
     // Server Validation Exception
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     public ResponseEntity<ApiResponse> MethodArgumentNotValidException(MethodArgumentNotValidException e) {
